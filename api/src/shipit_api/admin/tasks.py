@@ -29,7 +29,7 @@ class ArtifactNotFound(Exception):
 def get_trust_domain(repo_url, project, product):
     if is_github_url(repo_url):
         repo_owner, repo_name = extract_github_repo_owner_and_name(repo_url)
-        if repo_owner == "mozilla-mobile":
+        if repo_owner == "mozilla-mobile" or repo_name.startswith("staging-"):
             return "mobile"
         elif repo_name in SUPPORTED_MOBILE_REPO_NAMES:
             # fenix forks don't pollute the mobile namespace, for instance
